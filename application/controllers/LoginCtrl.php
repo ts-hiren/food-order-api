@@ -8,10 +8,10 @@ class LoginCtrl extends CI_Controller {
 	public function login()
 	{
 		$data = array();
-		if ($this->input->post('username')) {
+		if ($this->input->post('contact_no')) {
 			$creds['username'] = $this->input->post('username',TRUE);
 			$this->load->model('CommonModel');
-			$user_info = $this->CommonModel->getSingleData($creds,'user_mst');
+			$user_info = $this->CommonModel->getSingleData($creds,'users');
 			if (!empty($user_info) && count($user_info)) {
 				if ($user_info['password'] == sha1($this->input->post('password',TRUE))) {
 					$user_info['role'] = $this->CommonModel->getSingleData(['role_id'=> $user_info['role']],'role_mst')['role_name'];

@@ -59,7 +59,7 @@ $config['time_reference'] = 'local';
 $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
-
+// custom configs
 $config['series_img_upload'] = [
 	'max_size' => '700',
 	'upload_path' => IMG_UPLOAD_LOCATION.'series/',

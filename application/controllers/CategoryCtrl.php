@@ -14,7 +14,7 @@ class CategoryCtrl extends CI_Controller {
 		$layoutData['pageData'] = array();
 		$this->load->view('layout',$layoutData);
 	}
-	public function categoryForm($id = '')
+	public function show($id = '')
 	{
 		$data = [];
 		if ($id != '' && $id != 0) {
@@ -23,7 +23,7 @@ class CategoryCtrl extends CI_Controller {
 		}
 		$this->load->view('category/category_form',$data);
 	}
-	public function addUpdateCategory()
+	public function store()
 	{
 		$this->load->model('CommonModel');
 		$categoryData = [];
@@ -66,7 +66,7 @@ class CategoryCtrl extends CI_Controller {
 			exit();
 		}
 	}
-	public function checkCategory(){
+	public function check() {
 		$this->load->model('CommonModel');
 		$id = $this->input->post('hdnID',TRUE) ? $this->input->post('hdnID',TRUE) : 0;
 		$name = $this->input->post('category_name',TRUE);
@@ -112,7 +112,7 @@ class CategoryCtrl extends CI_Controller {
 			exit();
 		}
 	}
-	public function getCategory()
+	public function list()
 	{
 		$draw = intval($this->input->get('draw',true));
 		$this->load->model('CommonModel');
@@ -129,7 +129,7 @@ class CategoryCtrl extends CI_Controller {
 			$id = $record['category_id'];
 			$record['status'] = "<input type='checkbox' class='status-switch' $status data-id='$id' data-fouc>";
 			$record['action'] = "
-				<a href='javascript:void(0)' onclick='openModal(`Update Category`,`".base_url("/category-modal/$id")."`,`lg`)' title='Edit'><i class='text-info icon-pencil7'></i></a>
+				<a href='javascript:void(0)' onclick='openModal(`Update Category`,`".base_url("/category/$id")."`,`lg`)' title='Edit'><i class='text-info icon-pencil7'></i></a>
 				<a href='javascript:void(0)' onclick='deleteCategory(`$id`)' title='Delete'><i class='text-danger icon-eraser2'></i></a>
 			";
 			return $record;

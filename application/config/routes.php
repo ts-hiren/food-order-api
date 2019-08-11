@@ -10,20 +10,13 @@ $route['/'] = 'HomeCtrl';
 $route['login'] = 'LoginCtrl/login';
 $route['logout'] = 'LoginCtrl/logout';
 
-$route['category'] = 'CategoryCtrl';
-$route['category-modal/(:any)'] = 'CategoryCtrl/categoryForm/$1';
-$route['submit-category'] = 'CategoryCtrl/addUpdateCategory';
-$route['check_category'] = 'CategoryCtrl/checkCategory';
-$route['list-category'] = 'CategoryCtrl/getCategory';
+$route['category']['get'] = 'CategoryCtrl';
+$route['category/(:num)']['get'] = 'CategoryCtrl/show/$1';
+$route['category']['post'] = 'CategoryCtrl/store';
+$route['check_category']['post'] = 'CategoryCtrl/check';
+$route['category']['get'] = 'CategoryCtrl/list';
 $route['category_status']['post'] = 'CategoryCtrl/toggle';
 
-
-$route['series'] = 'SeriesCtrl';
-$route['series-modal/(:any)'] = 'SeriesCtrl/seriesForm/$1';
-$route['submit-series'] = 'SeriesCtrl/addUpdateSeries';
-$route['check_series'] = 'SeriesCtrl/checkSeries';
-$route['list-series'] = 'SeriesCtrl/getSeries';
-$route['series_status']['post'] = 'SeriesCtrl/seriesStatus';
 
 $route['books'] = 'BookCtrl';
 $route['book'] = 'BookCtrl/booksForm/';
